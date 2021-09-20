@@ -27,23 +27,23 @@ router.get('/:id', (req, res) => {
   );
 });
   
-  router.post('/', (req, res) => {
-    const { CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL } = req.body;
-    connection.query(
-      'INSERT INTO referents (CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL) VALUES (?, ?, ?, ?)',
-      [CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL],
-      (err, result) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Error saving the document');
-        } else {
-          const id = result.insertId;
-          const createdReferent = { id, CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL };
-          res.status(201).json(createdReferent);
-        }
-      }
-    );
-  });
+router.post('/', (req, res) => {
+const { CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL } = req.body;
+connection.query(
+    'INSERT INTO referents (CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL) VALUES (?, ?, ?, ?)',
+    [CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL],
+    (err, result) => {
+    if (err) {
+        console.error(err);
+        res.status(500).send('Error saving the document');
+    } else {
+        const id = result.insertId;
+        const createdReferent = { id, CT_NOM, CT_FONCTION, CT_FORMATS, CT_MAIL };
+        res.status(201).json(createdReferent);
+    }
+    }
+);
+});
   
 router.put('/:id', (req, res) => {
   const referentId = req.params.id;
