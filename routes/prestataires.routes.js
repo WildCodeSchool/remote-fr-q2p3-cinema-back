@@ -27,23 +27,23 @@ router.get('/:id', (req, res) => {
   );
 });
   
-  router.post('/', (req, res) => {
-    const { PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT } = req.body;
-    connection.query(
-      'INSERT INTO prestataires (PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT],
-      (err, result) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Error saving the document');
-        } else {
-          const id = result.insertId;
-          const createdPrestataire = { id, PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT };
-          res.status(201).json(createdPrestataire);
-        }
-      }
-    );
-  });
+router.post('/', (req, res) => {
+const { PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT } = req.body;
+connection.query(
+    'INSERT INTO prestataires (PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    [PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT],
+    (err, result) => {
+    if (err) {
+        console.error(err);
+        res.status(500).send('Error saving the document');
+    } else {
+        const id = result.insertId;
+        const createdPrestataire = { id, PRO_SIRET, PRO_INTITULE, PRO_ACTIVITE1, PRO_ACTIVITE2, PRO_ACTIVITE3, PRO_COMPLEMENT_ACTIVITE, PRO_SITE_WEB, PRO_EMAIL, PRO_ADRESSE, PRO_CODE_POSTAL, PRO_COMMUNE, PRO_TELEPHONE, PRO_SAISIE, PRO_MAJ, DEPT };
+        res.status(201).json(createdPrestataire);
+    }
+    }
+);
+});
   
 router.put('/:id', (req, res) => {
   const prestataireId = req.params.id;
