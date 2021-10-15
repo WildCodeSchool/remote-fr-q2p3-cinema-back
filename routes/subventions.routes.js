@@ -2,7 +2,7 @@ const connection = require("../db-config");
 const router = require("express").Router();
 
 router.get('/', (req, res) => {
-    connection.query('SELECT * FROM subventions', (err, result) => {
+    connection.query('SELECT * FROM subventions GROUP BY movies_id', (err, result) => {
       if (err) {
         res.status(500).send('Error retrieving documents from database');
       } else {
@@ -26,6 +26,8 @@ router.get('/:id', (req, res) => {
     }
   );
 });
+
+
   
 router.post('/', (req, res) => {
   const { SUBVENTION_ANNEE, SUBVENTION_NUMDOSSIER, SUBVENTION_TITRE, SUBVENTION_TYPEAIDE, SUBVENTION_MONTANT_REGION, SUBVENTION_BUDGETPREVISIONNEL_FILM } = req.body;
@@ -44,7 +46,7 @@ router.post('/', (req, res) => {
     }
   );
 });
-  
+ 
 router.put('/:id', (req, res) => {
   const subventionsId = req.params.id;
   const db = connection.promise();
