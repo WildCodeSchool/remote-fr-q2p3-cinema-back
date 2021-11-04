@@ -1,10 +1,10 @@
 # Cinéma Région Sud - BACKEND
 
 ## Contributors :
-Anne MARZIALE - Benjamin BONNET  - Yoann MAULINE - Karim KAMELI - Chrisophe MICHAUD
+Anne MARZIALE - Benjamin BONNET  - Yoann MAULINE - Karim KAMELI - Christophe MICHAUD
 
 ### Instructions :
-Popour lancer le projet, cloner le repository (GIT clone) back et front. Ensuite, exécutez "npm install" à la racine du projet pour installer les packages. Vous devrez également créer une base de données MYSQL et créer un fichier .env en suivant les détails .env.sample pour configurer votre connexion.
+Pour lancer le projet, cloner le repository (GIT clone) back et front. Ensuite, exécutez "npm install" à la racine du projet pour installer les packages. Vous devrez également créer une base de données MYSQL et créer un fichier .env en suivant les détails .env.sample pour configurer votre connexion.
 Après vous devrez démarrer le back (npm start) et le front (npm start) pour naviguer correctement sur le site sans avoir de problèmes .
 
 #### Packages : 
